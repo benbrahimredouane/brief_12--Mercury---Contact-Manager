@@ -1,7 +1,11 @@
 📇 Contact Management Application
+
 📋 Project Overview
+
 In this project, I worked individually to build a web application using Laravel and a relational database. The main objective was to develop a contact management system organized by groups, which allowed me to learn and implement the fundamentals of Laravel.
+
 🎯 Learning Objectives
+
 Through this project, I explored and implemented:
 
 MVC Architecture - Understanding the Model-View-Controller pattern
@@ -29,28 +33,32 @@ Eloquent ORM - Database Management
 
 Clone the repository
 
-bashgit clone [your-repository-url]
+git clone [your-repository-url]
 cd [project-directory]
 
 Install dependencies
 
-bashcomposer install
+composer install
 
 Configure environment
 
-bashcp .env.example .env
+cp .env.example .env
 php artisan key:generate
 
 Set up database
 
-bashphp artisan migrate
+php artisan migrate
 
 Run the application
 
-bashphp artisan serve
+php artisan serve
+
+
 📸 Screenshots
-Add your application screenshots here
+soon...
+
 👤 Author
-Your Name
+Redouane
+
 📄 License
 This project is part of an academic assignment.
