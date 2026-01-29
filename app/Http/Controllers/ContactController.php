@@ -15,7 +15,7 @@ class ContactController extends Controller
     public function index()
     {
         //
-        $contacts = Contact::all(); // Get all groups from DB
+        $contacts = Contact::all();
         return view('contacts.index', compact('contacts'));
     }
 
@@ -60,6 +60,8 @@ class ContactController extends Controller
     public function edit(string $id)
     {
         //
+        $contact = Contact::find($id);
+        return view('contacts.edit',compact('contact'));
     }
 
     /**
@@ -68,6 +70,15 @@ class ContactController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $data = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|unique:contacts,email,'. $id,
+            'phone' => 'required|regex:/^\+?[0-9]{8,15}$/',
+        ]);
+
+        Contact::find($id)->update($data);
+       
+        return redirect()->route('contacts.index')->with('success', 'contact updated successfully!');
     }
 
     /**
@@ -76,5 +87,7 @@ class ContactController extends Controller
     public function destroy(string $id)
     {
         //
+        Contact::find($id)->delete();
+        return redirect()->route('contacts.index')->with('succes', 'contact deleted succesfully!');
     }
 }

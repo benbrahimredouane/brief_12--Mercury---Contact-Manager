@@ -32,13 +32,13 @@ class GroupController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-        'name' => 'required|string|max:255',
-        'description' => 'nullable|string',
-    ]);
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+        ]);
 
-    Group::create($data);
+        Group::create($data);
 
-    return redirect()->route('groups.index')->with('success', 'Group created successfully!');
+        return redirect()->route('groups.index')->with('success', 'Group created successfully!');
     }
 
     /**
@@ -46,7 +46,9 @@ class GroupController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $group = Group::find($id); 
+        return view('groups.view' , compact('group'));
+       
     }
 
     /**
@@ -55,6 +57,9 @@ class GroupController extends Controller
     public function edit(string $id)
     {
         //
+        $group = Group::find($id);
+        return view('groups.edit', compact('group'));
+        
     }
 
     /**
@@ -63,6 +68,15 @@ class GroupController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $data = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+        ]);
+
+        $group = Group::FindOrfail($id);
+        $group->update($data);
+
+        return redirect()->route('groups.index')->with('success', 'group updated successfully!');
     }
 
     /**
@@ -71,5 +85,7 @@ class GroupController extends Controller
     public function destroy(string $id)
     {
         //
+        Group::find($id)->delete();
+        return redirect()->route('groups.index')->with('succes', 'group deleted succesfully!');
     }
 }
