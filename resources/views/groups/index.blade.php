@@ -36,8 +36,16 @@
                 <td>{{ $group->name }}</td>
                 <td>{{ $group->description ?? '—' }}</td>
                 <td>{{ $group->is_active ? 'Yes' : 'No' }}</td>
-                <td>
-                    <!-- Edit & Delete links later -->
+                <td class="d-flex gap-2">
+                    <a class="btn btn-warning" href="{{route('groups.edit', $group->id) }}">edit</a>
+                    <form action=" {{route('groups.destroy', $group->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">delete</button>
+
+                    </form>
+                     <a class="btn btn-primary" href="{{route('groups.show', $group->id ) }}">view</a>
+
                 </td>
             </tr>
             @endforeach
