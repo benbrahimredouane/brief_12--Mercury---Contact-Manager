@@ -22,7 +22,8 @@
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
-                    <th>Description</th>
+                    <th>email</th>
+                    <th>phone</th>
                     <th>Active?</th>
                     <th>Actions</th>
                 </tr>
@@ -33,9 +34,16 @@
                         <td>{{ $contact->id }}</td>
                         <td>{{ $contact->name }}</td>
                         <td>{{ $contact->email}}</td>
+                        <td>{{ $contact->phone}}</td>
                         <td>{{ $contact->is_active ? 'Yes' : 'No' }}</td>
-                        <td>
-                            <!-- Edit & Delete links later -->
+                        <td class="d-flex gap-2">
+                            <a class="btn btn-warning" href="{{route('contacts.edit', $contact->id) }}">edit</a>
+                            <form action=" {{route('contacts.destroy', $contact->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                            <button type="submit" class="btn btn-danger">delete</button>
+                            
+                            </form>
                         </td>
                     </tr>
                 @endforeach
