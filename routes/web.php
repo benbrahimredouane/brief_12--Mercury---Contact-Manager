@@ -6,9 +6,12 @@ use App\Http\Controllers\GroupController;
 use App\Http\Controllers\ContactController;
 
 
-Route::resource('contacts', ContactController::class);
+
 
 Route::resource('groups', GroupController::class);
+Route::resource('contacts', ContactController::class);
+
+
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
