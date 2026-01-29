@@ -13,6 +13,6 @@ Route::resource('contacts', ContactController::class);
 
 
 
-
+Route::get('/groups/add', [GroupController::class, 'add'])->name('add');
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
