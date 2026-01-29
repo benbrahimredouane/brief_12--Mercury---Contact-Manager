@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Contact;
-
+use App\Models\Group;
 
 
 class ContactController extends Controller
@@ -25,7 +25,8 @@ class ContactController extends Controller
     public function create()
     {
         //
-        return view('contacts.create');
+        $groups = Group::all();
+        return view('contacts.create',compact('groups'));
     }
 
     /**
@@ -38,8 +39,10 @@ class ContactController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|unique:contacts,email',
             'phone' => 'required|regex:/^\+?[0-9]{8,15}$/',
+            'group_id' => 'required',
+           
         ]);
-
+       
         Contact::create($data);
 
         return redirect()->route('contacts.index')->with('success', 'contact created successfully!');
@@ -74,6 +77,7 @@ class ContactController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|unique:contacts,email,'. $id,
             'phone' => 'required|regex:/^\+?[0-9]{8,15}$/',
+            
         ]);
 
         Contact::find($id)->update($data);
