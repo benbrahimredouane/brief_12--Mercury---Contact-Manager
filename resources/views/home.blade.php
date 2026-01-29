@@ -11,8 +11,11 @@
         <h1>welcome to mercury</h1>
 
         <h3>what do you want?</h3>
-
-        <a href="{{ route('contacts.index') }}"class="btn btn-primary mb-3">Contacts</a><a href="{{ route('groups.index') }}"class="btn btn-primary mb-3">Groups</a>
+         
+        <div>
+        <a href="{{ route('contacts.index') }}"class="btn btn-primary mb-3">Manage Contacts</a>
+        <a href="{{ route('groups.index') }}"class="btn btn-primary mb-3">Manage Groups</a>
+        </div>
     </div>
     
 </body>
