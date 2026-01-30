@@ -39,7 +39,7 @@ class ContactController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|unique:contacts,email',
             'phone' => 'required|regex:/^\+?[0-9]{8,15}$/',
-            'group_id' => 'required',
+            'group_id' => 'nullable',
            
         ]);
        
@@ -64,7 +64,8 @@ class ContactController extends Controller
     {
         //
         $contact = Contact::find($id);
-        return view('contacts.edit',compact('contact'));
+        $groups = Group::all();
+        return view('contacts.edit',compact('contact','groups'));
     }
 
     /**
@@ -77,6 +78,7 @@ class ContactController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|unique:contacts,email,'. $id,
             'phone' => 'required|regex:/^\+?[0-9]{8,15}$/',
+            'group_id' => 'nullable',
             
         ]);
 
@@ -94,4 +96,14 @@ class ContactController extends Controller
         Contact::find($id)->delete();
         return redirect()->route('contacts.index')->with('succes', 'contact deleted succesfully!');
     }
+
+    public function showfind(Request $request){
+
+        $submit = $request->submit;
+        
+        $contacts = Contact::where('name',$submit)->get();
+        return view('contacts.show',compact('contacts'));
+    }
+
+    
 }
