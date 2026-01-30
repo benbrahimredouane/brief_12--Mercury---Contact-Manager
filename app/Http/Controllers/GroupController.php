@@ -96,7 +96,7 @@ class GroupController extends Controller
     public function add()
     {
        
-        return view('add.view');
+        return view('groups.add');
        
     }
 }
