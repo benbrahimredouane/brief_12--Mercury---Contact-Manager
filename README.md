@@ -33,8 +33,8 @@ Through this project, I explored and implemented:
 
 1. Clone the repository
 ```bash
-git clone [your-repository-url]
-cd [project-directory]
+git clone https://github.com/benbrahimredouane/brief_12--Mercury---Contact-Manager
+cd brief_12--Mercury---Contact-Manager
 ```
 
 2. Install dependencies
