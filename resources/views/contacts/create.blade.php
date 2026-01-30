@@ -46,6 +46,18 @@
             value="{{ old('phone') }}">
         </div>
 
+        <div class="mb-3">
+
+            <select name="group_id" id="group_id">
+                <option value="" disabled selected >--no group--</option>
+                @foreach($groups as $group) 
+                <option value="{{$group->id}}">{{$group->name}}</option>
+                @endforeach
+            </select>
+            
+      
+        </div>
+
         <div class="mt-4">
             <button type="submit" class="btn btn-success">Save Contact</button>
             <a href="{{ route('contacts.index') }}" class="btn btn-secondary">Cancel</a>

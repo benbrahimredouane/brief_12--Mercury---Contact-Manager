@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Group;
+use App\Models\Contact;
 
 
 use Illuminate\Http\Request;
@@ -46,8 +47,11 @@ class GroupController extends Controller
      */
     public function show(string $id)
     {
+        $contacts = Contact::where('group_id',$id)->get();
         $group = Group::find($id); 
-        return view('groups.view' , compact('group'));
+        // $group = Group::find($id); 
+        // dd(var_dump( $contacts)); 
+        return view('groups.view' , compact('contacts','group'));
        
     }
 
@@ -87,5 +91,12 @@ class GroupController extends Controller
         //
         Group::find($id)->delete();
         return redirect()->route('groups.index')->with('succes', 'group deleted succesfully!');
+    }
+
+    public function add()
+    {
+       
+        return view('add.view');
+       
     }
 }
