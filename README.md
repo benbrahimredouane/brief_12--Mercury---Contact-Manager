@@ -25,7 +25,7 @@ Through this project, I explored and implemented:
 ## 🛠️ Technologies Used
 
 - **Laravel** - PHP Framework
-- **MySQL/PostgreSQL** - Relational Database
+- **MySQL** - Relational Database
 - **Blade** - Templating Engine
 - **Eloquent ORM** - Database Management
 
