@@ -8,10 +8,10 @@
 </head>
     
 </head>
-<body>
+<body class="container mt-5">
 
 <div class="container d-flex justify-content align-items-center w-100">
-<p>not required but i will do it in future</p>
+<h>This feature is not yet available. Go to the contact editing settings to add a contact to this group.</h1>
 </div>
 
 <a href="{{ route('groups.index') }}" class="btn btn-secondary">Back to contact</a> 
