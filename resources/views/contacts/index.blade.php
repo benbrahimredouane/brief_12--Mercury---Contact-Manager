@@ -13,6 +13,7 @@
 
     <a href="{{ route('contacts.create') }}" class="btn btn-primary mb-3">Add New Contact</a> 
     <a href="{{ route('home') }}" class="btn btn-primary mb-3">Back Home</a>
+    <a href="{{ route('showfind') }}" class="btn btn-secondary mb-3">find a contact</a>
 
     @if ($contacts->isEmpty())
         <p>No Contacts yet.</p>
