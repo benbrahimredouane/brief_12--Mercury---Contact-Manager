@@ -47,8 +47,8 @@
         </div>
 
         <div class="mb-3">
-
-            <select name="group_id" id="group_id">
+             <label for="group_id" class="form-label">group name</label>
+            <select name="group_id" id="group_id" class="form-select">
                 <option value="" disabled selected >--no group--</option>
                 @foreach($groups as $group) 
                 <option value="{{$group->id}}">{{$group->name}}</option>
